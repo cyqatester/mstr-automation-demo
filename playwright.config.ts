@@ -7,7 +7,7 @@ const envFile = path.resolve(process.cwd(), `.env.${envName}`);
 
 dotenv.config({ path: envFile, override: false });
 
-const baseURL = process.env.BASE_URL?.trim() ?? 'https://www.mstr.nl/';
+// const baseURL = process.env.BASE_URL?.trim() ?? 'https://www.mstr.nl/';
 const isCI = Boolean(process.env.CI);
 
 export default defineConfig({
@@ -25,7 +25,8 @@ export default defineConfig({
   ],
   outputDir: 'test-results',
   use: {
-    baseURL,
+    // baseURL,
+    baseURL: 'https://www.mstr.nl/',
     actionTimeout: 10_000,
     navigationTimeout: 20_000,
     trace: 'retain-on-failure',
