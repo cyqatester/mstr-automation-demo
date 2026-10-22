@@ -29,15 +29,4 @@ export class DienstenAiConsultancyPage {
     async expectDeepDiveHeaderVisible(): Promise<void> {
         await expect(this.deepDiveHeader).toBeVisible();  
     }
-
-    async expectNoHorizontalOverflow(): Promise<void> {
-        const dimensions = await this.page.evaluate(() => ({
-        viewportWidth: document.documentElement.clientWidth,
-        documentWidth: document.documentElement.scrollWidth
-        }));
-        expect(
-        dimensions.documentWidth,
-        `Horizontal overflow: document ${dimensions.documentWidth}px, viewport ${dimensions.viewportWidth}px`
-        ).toBeLessThanOrEqual(dimensions.viewportWidth + 1);
-    }
 }
