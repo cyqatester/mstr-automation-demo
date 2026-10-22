@@ -10,7 +10,6 @@ A maintainable end-to-end UI test framework for [MSTR](https://www.mstr.nl/) usi
 - Page Object Model with accessible, resilient locators
 - Custom typed fixtures
 - Desktop Chrome and Pixel 7 mobile emulation
-- English browser locale (`en-GB`) and `Accept-Language` header
 - HTML report, traces, screenshots and video on failures
 - GitHub Actions CI with manual environment selection
 
