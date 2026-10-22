@@ -16,6 +16,8 @@ export default defineConfig({
   forbidOnly: isCI,
   retries: isCI ? 2 : 0,
   workers: isCI ? 2 : undefined,
+  //limit the workers to 2 if the headless: false
+  // workers: 2,
   timeout: 30_000,
   expect: { timeout: 7_000 },
   globalTimeout: isCI ? 12 * 60 * 1000 : undefined,
@@ -27,6 +29,7 @@ export default defineConfig({
   use: {
     // baseURL,
     baseURL: 'https://www.mstr.nl/',
+    headless: true, //set to 'true' before pushing to Github remote
     actionTimeout: 10_000,
     navigationTimeout: 20_000,
     trace: 'retain-on-failure',

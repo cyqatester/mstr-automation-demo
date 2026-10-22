@@ -1,25 +1,29 @@
 import { test, expect } from '../src/fixtures/test.fixture';
 
 test.describe('MSTR homepage @smoke', () => {
-  test('loads the homepage and displays the main heading', async ({ homePage, page }) => {
-    await homePage.goto();
-    await homePage.expectLoaded();
-    await expect(page).toHaveURL(/mstr\.nl/);
-  });
+    test('loads the homepage and displays the main heading', async ({ homePage, page }) => {
+      await homePage.goto();
+      await homePage.expectLoaded();
+      await expect(page).toHaveURL(/mstr\.nl/);
+    });
 
-  test('shows a primary contact call to action', async ({ homePage }) => {
-    await homePage.goto();
-    await homePage.expectPrimaryCallToActionVisible();
-  });
+    test('shows Diensten drop down link', async ({ homePage }) => {
+      await homePage.goto();
+      await homePage.expectDienstenVisible();
+    });
 
-  test('renders the main service content', async ({ homePage, page }) => {
-    await homePage.goto();
-    await expect(page.getByText(/AI Consultancy/i).first()).toBeVisible();
-    await expect(page.getByText(/Product Development/i).first()).toBeVisible();
-  });
+    test('shows Use cases link', async ({ homePage }) => {
+      await homePage.goto();
+      await homePage.expectUseCasesVisible();
+    });
 
-  test('does not have horizontal overflow at the current viewport', async ({ homePage }) => {
-    await homePage.goto();
-    await homePage.expectNoHorizontalOverflow();
-  });
+    test('shows Blogs link', async ({ homePage }) => {
+      await homePage.goto();
+      await homePage.expectBlogsLinkVisible();
+    });
+
+    test('does not have horizontal overflow at the current viewport', async ({ homePage }) => {
+      await homePage.goto();
+      await homePage.expectNoHorizontalOverflow();
+    });
 });
