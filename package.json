@@ -1,0 +1,26 @@
+{
+  "name": "mstr-playwright-framework",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Scalable Playwright TypeScript framework for desktop and mobile testing of MSTR",
+  "scripts": {
+    "test": "playwright test",
+    "test:dev": "cross-env TEST_ENV=dev playwright test",
+    "test:test": "cross-env TEST_ENV=test playwright test",
+    "test:prod": "cross-env TEST_ENV=prod playwright test",
+    "test:desktop": "playwright test --project=desktop-chromium",
+    "test:mobile": "playwright test --project=mobile-chrome",
+    "test:smoke": "playwright test --grep @smoke",
+    "test:headed": "playwright test --headed",
+    "test:debug": "playwright test --debug",
+    "report": "playwright show-report",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.55.0",
+    "@types/node": "^22.0.0",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.4.7",
+    "typescript": "^5.7.2"
+  }
+}
