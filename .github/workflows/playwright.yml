@@ -28,7 +28,14 @@ jobs:
   test:
     name: Desktop and mobile tests
     runs-on: ubuntu-latest
+
+    # Browsers and their Linux dependencies are preinstalled.
+    container:
+      image: mcr.microsoft.com/playwright:v1.64.1-noble
+      options: --user 1001
+
     timeout-minutes: 25
+
     env:
       TEST_ENV: ${{ github.event.inputs.environment || 'test' }}
       BASE_URL: ${{ vars.PLAYWRIGHT_BASE_URL }}
@@ -41,14 +48,11 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v6
         with:
-          node-version: lts/*
+          node-version: '22'
           cache: npm
 
       - name: Install dependencies
         run: npm ci
-
-      - name: Install Playwright browsers
-        run: npx playwright install --with-deps chromium
 
       - name: Type-check
         run: npm run typecheck
