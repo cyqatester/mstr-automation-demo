@@ -7,7 +7,7 @@ const envFile = path.resolve(process.cwd(), `.env.${envName}`);
 
 dotenv.config({ path: envFile, override: false });
 
-const baseURL = process.env.BASE_URL ?? 'https://www.mstr.nl/';
+// const baseURL = process.env.BASE_URL ?? 'https://www.mstr.nl/';
 const isCI = Boolean(process.env.CI);
 
 export default defineConfig({
@@ -25,10 +25,8 @@ export default defineConfig({
   ],
   outputDir: 'test-results',
   use: {
-    baseURL,
-    // Request English content where the website supports browser-language negotiation.
-    locale: 'en-GB',
-    extraHTTPHeaders: { 'Accept-Language': 'en-GB,en;q=0.9' },
+    // baseURL,
+    baseURL: 'https://www.mstr.nl/',
     actionTimeout: 10_000,
     navigationTimeout: 20_000,
     trace: 'retain-on-failure',
